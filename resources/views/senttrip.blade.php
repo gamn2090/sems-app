@@ -51,16 +51,15 @@
                       <th >Correo</th>
                       <th >CheckIn</th>
                       <th >CheckOut</th>
-                      <th >Comentario</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach($encuestas as $encuesta)
                     <tr >
-                      <td >{{ $client->getName($encuesta->client_id) }}</td>
-                      <td >{{ $client->getMail($encuesta->client_id) }}</td>
-                      <td >{{ $client->getCin($encuesta->client_id) }}</td>
-                      <td >{{ $client->getCout($encuesta->client_id) }}</td>
+                      <td >{{ $encuesta->nombre_cliente }}</td>
+                      <td >{{ $encuesta->mail_cliente }}</td>
+                      <td >{{ $encuesta->fecha_entrada }}</td>
+                      <td >{{ $encuesta->fecha_salida }}</td>
                     </tr>
                     @endforeach
                 </tbody>

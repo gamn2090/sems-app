@@ -232,13 +232,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('Encuestas') }}" class="nav-link">
-                  <i class="fa fa-plus nav-icon"></i>
-                  <p>Ver</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fa fa-eye"></i>
+                  <i class="fa fa-eye nav-icon"></i>
                   <p>Ver</p>
                 </a>
               </li>

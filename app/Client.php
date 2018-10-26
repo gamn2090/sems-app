@@ -28,6 +28,7 @@ class Client extends Model
     public function getName($id)
     {
         $answer = Client::find($id);
+        //dd($id);
         return $answer->nombre_cliente.' '.$answer->apellido_cliente;
     }
     public function getMail($id)

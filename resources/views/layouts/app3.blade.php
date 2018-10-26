@@ -8,9 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>¡¡Gracias!!</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>

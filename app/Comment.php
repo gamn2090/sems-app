@@ -19,7 +19,13 @@ class Comment extends Model
 
     public function getComment($id)
     {
-        $answer = Comment::where('client_id','=',$id)->first();
-        return $answer->comentario;
+        $count = Comment::where('client_id','=',$id)->count();
+        if($count > 0){
+            $answer = Comment::where('client_id','=',$id)->first();
+            return $answer->comentario;
+        }
+        else{
+            return '-';
+        }
     }
 }

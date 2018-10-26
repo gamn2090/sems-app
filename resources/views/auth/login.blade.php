@@ -1,69 +1,55 @@
-@extends('layouts.app')
+@extends('layouts.applogin')
 
 @section('content')
+<body id="LoginForm">
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+<h1 class="form-heading">Formulario de Acceso</h1>
+<div class="login-form">
+<div class="main-div">
+    <div class="panel">
+   <h2>Login Administrador</h2>
+   <p>Porfavor ingrese su Usuario y Contraseña</p>
+   </div>
+    <form id="Login" method="POST" action="{{ route('login') }}">
+        {{ csrf_field() }}
+        <div class="form-group">
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+            <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Usuario" value="{{ old('username') }}" required autofocus>
+            @if ($errors->has('username'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('username') }}</strong>
+                </span>
+            @endif
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
+        </div>
 
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+        <div class="form-group">
 
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+            <input required type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+             @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+        </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+        <div class="form-group">
+            <div class="col-md-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                    </label>
                 </div>
             </div>
         </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
     </div>
-</div>
+    <p class="botto-text"> Hoteles San Agustín SemsApp</p>
+</div></div></div>
+
+
+</body>
 @endsection

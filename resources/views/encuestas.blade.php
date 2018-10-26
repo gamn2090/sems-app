@@ -57,7 +57,7 @@
                     <tr onclick="searchPoints({{$encuesta->client_id}})" style="cursor: pointer" >
                       <td >{{ $client->getName($encuesta->client_id) }}</td>
                       <td >
-                        {{ $encuesta->puntaje/6 }}
+                        {{ round($encuesta->puntaje/6,2) }}
                       </td>
                       <td >{{ $comment->getComment($encuesta->client_id) }}</td>
                     </tr>

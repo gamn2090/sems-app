@@ -7,7 +7,6 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Commands\insertclient;
 use App\Console\Commands\SendMail;
 use App\Console\Commands\SendTripMail;
-use App\Console\Commands\SendSecondMail;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,7 +18,6 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         insertclient::class,
         SendTripMail::class,
-        SendSecondMail::class,
         SendMail::class
     ];
 
@@ -31,10 +29,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new insertclient)->hourly();
+        $file = storage_path('logs/laravel.log');
         $schedule->job(new SendMail)->hourly();
-        $schedule->job(new SendSecondMail)->hourly();
         $schedule->job(new SendTripMail)->hourly();
+        $schedule->job(new insertclient)->hourly();
     }
 
     /**

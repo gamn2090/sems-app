@@ -15,10 +15,11 @@ class MailingController extends Controller
 {
     public function sendMail(Request $request)
     {
-        $fecha = Carbon::today()->format('d/m/Y');
+        $fecha = date("j/m/Y");
         $clients = Client::where('enviado_mail','=','0')
                          ->where('fecha_media','like','%'.$fecha.'%')->get();
         $hotel = new Hotel();
+        //dd($clients);
 
         foreach ($clients as $client) {
            Mail::send('MailTemplate', ['client' => $client, 'hotel' => $hotel], function ($m) use ($client, $hotel) {
