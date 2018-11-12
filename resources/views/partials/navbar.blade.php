@@ -91,21 +91,6 @@
       </li> -->
        <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a id="notificaciones" class="nav-link" data-toggle="dropdown" href="#">
-          <i style="font-size: 30px;" class="fa fa-bell-o"></i>
-          <span class="badge badge-warning navbar-badge" id="cant_total">{{ $Notification }}</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header"><span id="cantidad_total">{{$Notification}}</span> Notificaciones Nuevas</span>
-          <div class="dropdown-divider"></div>
-          <a onclick="changePun()" href="#" class="dropdown-item">
-            <i class="fa fa-envelope mr-2"></i><span id="">{{$puntuacion_cont}}</span> Encuestas Nuevas
-          </a>
-          <div  class="dropdown-divider"></div>
-          <a onclick="changeCom()" href="{{route('commentsNotSeen')}}" class="dropdown-item">
-            <i class="fa fa-users mr-2"></i><span id="">{{$comments_cont}}</span> Comentarios Nuevos
-          </a>
-        </div>
       </li>
       <li class="user-footer">
         <div class="pull-right">

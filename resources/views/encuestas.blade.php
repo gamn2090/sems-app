@@ -46,7 +46,7 @@
                 @if($encuestas->count() > 0)
                 <table class="table table-striped">
                   <thead>
-                    <tr>
+                    <tr style="text-align: center;">
                       <th >Cliente</th>
                       <th >Puntaje General</th>
                       <th >Comentario</th>
@@ -55,11 +55,11 @@
                   <tbody>
                     @foreach($encuestas as $encuesta)
                     <tr onclick="searchPoints({{$encuesta->client_id}})" style="cursor: pointer" >
-                      <td >{{ $client->getName($encuesta->client_id) }}</td>
-                      <td >
-                        {{ round($encuesta->puntaje/6,2) }}
+                      <td  style="width: 30%;">{{ $client->getName($encuesta->client_id) }}</td>
+                      <td style="width: 30%;" >
+                        {{ round(($encuesta->puntaje/6),2) }}
                       </td>
-                      <td >{{ $comment->getComment($encuesta->client_id) }}</td>
+                      <td style="width: 40%;">{{ $comment->getComment($encuesta->client_id) }}</td>
                     </tr>
                     @endforeach
                 </tbody>

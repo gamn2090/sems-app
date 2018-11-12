@@ -127,7 +127,7 @@ class ClientController extends Controller
      */
     public function AnsweredSurveys()
     {
-			 	$encuestas = Client::where('recibido_encuesta','>','0')->get();
+			 	$encuestas = Client::where('recibido_encuesta','>','0')->where('hotel_id','=',Auth::user()->hotel_id)->get();
 
         $comment = new Comment();
         $client = new Client();
@@ -187,7 +187,7 @@ class ClientController extends Controller
      */
     public function CommentsReceived()
     {
-			 $encuestas = Comment::all();
+			 $encuestas = Comment::where('hotel_id','=',Auth::user()->hotel_id)->get();
 
         $comment = new Comment();
         $client = new Client();
