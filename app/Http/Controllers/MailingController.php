@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mail;
+use Redirect;
 use App\Client;
 use App\Hotel;
 use App\Point;
@@ -16,19 +17,18 @@ class MailingController extends Controller
     public function sendMail(Request $request)
     {
         $fecha = date("j/m/Y");
-        $clients = Client::where('enviado_mail','=','0')
-                         ->where('fecha_media','like','%'.$fecha.'%')->get();
+        $clients = Client::where('id','=','2643')->get();
         $hotel = new Hotel();
         //dd($clients);
 
         foreach ($clients as $client) {
-           Mail::send('MailTemplate', ['client' => $client, 'hotel' => $hotel], function ($m) use ($client, $hotel) {
+           Mail::send('MailTemplateTripadvisor', ['client' => $client, 'hotel' => $hotel], function ($m) use ($client, $hotel) {
                  $m->from('emarketing@hotelessanagustin.pe', 'Envío automático de Encuestas de HSA');
                  $m->to($client['mail_cliente'], $client['nombre_cliente'].' '.$client['apellido_cliente'])->subject('Encuesta de Calidad de Servicios de '.$hotel->getName($client['hotel_id']));
               });
 
            $cliente_update = Client::find($client->id);
-           $cliente_update->enviado_mail = 1;
+           $cliente_update->enviado_mail = 0;
            $cliente_update->save();
         }
     }
@@ -77,22 +77,20 @@ class MailingController extends Controller
     {
     		$client = Client::find($id);
     		$hotel = new Hotel();
-    		$points = Point::where('client_id','=',$id)->count();
-    		if($points == 0)
+    		if($client->recibido_encuesta == 0)
     			return view('envioencuesta',compact('client','hotel'));
     		else
-    			return view('welcome');
+          return Redirect('http://www.hotelessanagustin.com.pe');
     }
 
     public function ShowSecondSurvei( $id )
     {
         $client = Client::find($id);
         $hotel = new Hotel();
-        $points = Point::where('client_id','=',$id)->count();
-        if($points == 6)
+        if($client->recibido_encuesta == 0)
           return view('envioencuesta',compact('client','hotel'));
         else
-          return view('welcome');
+          return Redirect('http://www.hotelessanagustin.com.pe');
     }
 
     public function thanks()
@@ -103,6 +101,7 @@ class MailingController extends Controller
     public function StorePoints(Request $request)
     {
     		$post = $request->all();
+        //dd($post);
 
   			$point = new Point();
   			$point->hotel_id = $post['hotel'];
@@ -169,6 +168,6 @@ class MailingController extends Controller
         $cliente->recibido_encuesta = 1;
         $cliente->save();
 
-        return redirect()->route('thanks');
+        echo json_encode("1");
     }
 }

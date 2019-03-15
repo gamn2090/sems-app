@@ -10,12 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/VerClientes', 'ClientController@getClientData')->name('VerClientes');
-Auth::routes();
-Route::group(['middleware' => ['auth'] ], function()
 
+Route::group(['middleware' => ['auth'] ], function()
 {
 	Route::get('/home', 'ClientController@index')->name('home');
 	//ver las encuestas de los clientes

@@ -63,10 +63,10 @@ class ClientController extends Controller
     public function Encuestas()
     {
 			 $encuestas = DB::table('points')
-                     ->select(DB::raw('client_id, sum(puntaje) as puntaje'))
-                     ->where('hotel_id', '=', Auth::user()->hotel_id)
-                     ->groupBy('client_id')
-                     ->get();
+                      ->select(DB::raw('client_id, sum(puntaje) as puntaje'))
+                      ->where('hotel_id', '=', Auth::user()->hotel_id)
+                      ->groupBy('client_id')
+                      ->get();
 
         $comment = new Comment();
         $client = new Client();

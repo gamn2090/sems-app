@@ -49,7 +49,7 @@ class SendMail extends Command
         try {
 
             $clients = Client::where('enviado_mail','=','0')
-                             ->where('fecha_media','like','%'.$fecha.'%')->get();
+                             ->where('fecha_salida','like','%'.$fecha.'%')->get();
             $hotel = new Hotel();
 
             foreach ($clients as $client) {

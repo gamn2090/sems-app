@@ -13,7 +13,7 @@
                   <br>
                   <br>
                   </div>
-                  <form id="Survei" role="form" method="post" action="{{route('StorePoints')}}">
+                  <form id="Survei" role="form" method="post">
                     {!! csrf_field() !!}
                     <input type="hidden" id="cliente" name="cliente" value="{{$client->id}}">
                     <input type="hidden" id="hotel" name="hotel" value="{{$client->hotel_id}}">
@@ -37,7 +37,7 @@
                         <input type="radio" value="4" name="personal" id="personal">Bueno
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="5" name="personal" id="personal">Muy bueno
+                        <input checked type="radio" value="5" name="personal" id="personal">Muy bueno
                       </label>
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                         <input type="radio" value="4" name="instalaciones" id="instalaciones">Bueno
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="5" name="instalaciones" id="instalaciones">Muy bueno
+                        <input checked type="radio" value="5" name="instalaciones" id="instalaciones">Muy bueno
                       </label>
                     </div>
                   </div>
@@ -85,7 +85,7 @@
                         <input type="radio" value="4" name="limpieza" id="limpieza">Bueno
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="5" name="limpieza" id="limpieza">Muy bueno
+                        <input checked type="radio" value="5" name="limpieza" id="limpieza">Muy bueno
                       </label>
                     </div>
                   </div>
@@ -109,7 +109,7 @@
                         <input type="radio" value="4" name="confort" id="confort">Bueno
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="5" name="confort" id="confort">Muy bueno
+                        <input checked type="radio" value="5" name="confort" id="confort">Muy bueno
                       </label>
                     </div>
                   </div>
@@ -121,19 +121,19 @@
                   <div class="row">
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
-                        <input type="radio" value="1" name="ubicacion"id="ubicacion">Muy malo
+                        <input type="radio" value="1" name="ubicacion" id="ubicacion">Muy malo
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="2" name="ubicacion"id="ubicacion">Malo
+                        <input type="radio" value="2" name="ubicacion" id="ubicacion">Malo
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="3" name="ubicacion"id="ubicacion">Regular
+                        <input type="radio" value="3" name="ubicacion" id="ubicacion">Regular
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="4" name="ubicacion"id="ubicacion">Bueno
+                        <input type="radio" value="4" name="ubicacion" id="ubicacion">Bueno
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="5" name="ubicacion" id="ubicacion">Muy bueno
+                        <input checked type="radio" value="5" name="ubicacion" id="ubicacion">Muy bueno
                       </label>
                     </div>
                   </div>
@@ -157,7 +157,7 @@
                         <input type="radio" value="4" name="relacion" id="relacion">Bueno
                       </label>
                       <label class="radio-inline">
-                        <input type="radio" value="5" name="relacion" id="relacion">Muy bueno
+                        <input checked type="radio" value="5" name="relacion" id="relacion">Muy bueno
                       </label>
                     </div>
                   </div>
@@ -171,7 +171,7 @@
 
                 <div class="row">
                   <div class="form-group col-md-6 col-md-offset-5">
-                      <button type="submit" class="btn btn-default">Enviar Encuesta</button>
+                      <button id="enviar" type="button" class="btn btn-default">Enviar Encuesta</button>
                     </div>
                 </div>
 
@@ -181,10 +181,84 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="text-align: center" id="myModalLabel">¡Muchas gracias por su preferencia!</h4>
+        </div>
+        <div class="modal-body">
+          <div data-editable="multimedia:image" id="edi-edje7" data-uid="edi-edje7" class="" data-draggable="true" style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; text-align: center;">
+                <img src="https://multimedia.getresponse.com/getresponse-zICDz/photos/721532102.jpg" alt="" width="292" height="241">
+            </div>
+            <div style="font-size:54px; text-align: center;" class="text-content">Que sigas disfrutando tus viajes
+                <br>
+            </div>
+            <div data-editable="text" id="edi-jjdu0" data-uid="edi-jjdu0" class="" data-draggable="true">
+                    <div style="line-height:1.2; text-align: center; font-size: 20px;" class="text-content">¡Fuiste un cliente excepcional!
+                        <br>
+                    </div>
+                </div>
+
+                <div data-editable="multimedia:image" id="edi-5811d" data-uid="edi-5811d" class="" data-draggable="true" style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; text-align: center;">
+                    <img src="https://app.getresponse.com/images/common/templates/landing/195/1/img/195_05.png" alt="/" width="135" height="188">
+                </div>
+                <button id="salir" type="button" class="btn btn-default">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('Scripts')
+<script type="text/javascript">
+  $("#enviar").click(function() {
+          $("#enviar").attr("disabled", "disabled");
+          var hotel  = $('#hotel').val();
+          var cliente = $('#cliente').val();
+          var personal  = $('#personal:checked').val();
+          var instalaciones = $('#instalaciones:checked').val();
+          var limpieza = $('#limpieza:checked').val();
+          var confort = $('#confort:checked').val();
+          var ubicacion = $('#ubicacion:checked').val();
+          var relacion = $('#relacion:checked').val();
+          var comentario = $('#comentario').val();
+          var data = {personal,
+                      hotel,
+                      cliente,
+                      instalaciones,
+                      limpieza,
+                      confort,
+                      ubicacion,
+                      relacion,
+                      comentario,
+                      data};
 
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+
+          var request = $.ajax({
+              url:  '/StorePoints',
+              type: "POST",
+              data: data,
+              dataType:"json"
+          });
+
+          request.done(function( data ) {
+            $('#myModal').modal({
+                backdrop: 'static',
+                keyboard: false,
+            }, "show")
+        });
+  });
+  $("#salir").click(function() {
+    window.close();
+  });
+</script>
 @endsection
 
 </body>

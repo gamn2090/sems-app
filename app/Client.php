@@ -31,6 +31,12 @@ class Client extends Model
         //dd($id);
         return $answer->nombre_cliente.' '.$answer->apellido_cliente;
     }
+    public function getReservation($id)
+    {
+        $answer = Client::find($id);
+        //dd($id);
+        return $answer->codigo_reserva;
+    }
     public function getMail($id)
     {
         $answer = Client::find($id);

@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Simple Transactional Email</title>
+    <title>Hsa Survey Mail</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -258,6 +258,9 @@
               <tr>
                 <td class="wrapper">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr style="text-align: center">
+                      <img src="https://res.cloudinary.com/dklua9mor/image/upload/v1544639796/hsa.jpg" alt="Hoteles San Agustín" width="174" height="150">
+                    </tr>
                     <tr>
                       <td>
                         <p>¡Hola! Sr./Sra. <strong>{{ $client->nombre_cliente.' '.$client->apellido_cliente }}</strong>,</p>
