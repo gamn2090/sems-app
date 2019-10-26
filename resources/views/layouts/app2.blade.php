@@ -8,7 +8,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
-  <meta content=" name="description">
+  <meta content="" name="description">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow" />
   <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
@@ -89,10 +89,9 @@
         <script src="{{ asset('dist/js/adminlte.js') }}"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+        <script src="{{ asset('js/ajaxs.js') }}"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{ asset('dist/js/demo.js') }}"></script>
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.min.js"></script>
         <script>

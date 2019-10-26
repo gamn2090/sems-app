@@ -24,7 +24,7 @@ class MailingController extends Controller
         foreach ($clients as $client) {
            Mail::send('MailTemplateTripadvisor', ['client' => $client, 'hotel' => $hotel], function ($m) use ($client, $hotel) {
                  $m->from('emarketing@hotelessanagustin.pe', 'Envío automático de Encuestas de HSA');
-                 $m->to($client['mail_cliente'], $client['nombre_cliente'].' '.$client['apellido_cliente'])->subject('Encuesta de Calidad de Servicios de '.$hotel->getName($client['hotel_id']));
+                 $m->to('reservasonline@hsaperu.com', $client['nombre_cliente'].' '.$client['apellido_cliente'])->subject('Encuesta de Calidad de Servicios de '.$hotel->getName($client['hotel_id']));
               });
 
            $cliente_update = Client::find($client->id);

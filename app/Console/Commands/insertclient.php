@@ -49,7 +49,7 @@ class insertclient extends Command
         $cliente = new ClientGuzzle();
         $id = 1;
         for ($i=$id; $i < 10 ; $i++) {
-            $request = $cliente->request('GET', 'http://localhost:52156/ClientData/clients/Get/'.$i);
+            $request = $cliente->request('GET', 'http://192.168.5.233:52156/ClientData/clients/Get/'.$i);
             $respuestas = json_decode($request->getBody()->getContents(), true);
             $array = json_decode( $respuestas, true );
             if(!empty($array)){

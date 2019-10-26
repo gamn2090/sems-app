@@ -5,10 +5,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Encuesta de Calidad</div>
+                <div class="panel-heading" style="text-align: center; font-size: 22px; font-weight: bold">Encuesta de Calidad</div>
 
                 <div class="panel-body">
-                  <div><p>Estimado Sr./Sra. <strong>{{ $client->nombre_cliente.' '.$client->apellido_cliente }}</strong>, usted se @if($client->envio_encuesta == 0) hospeda @else hospedó @endif en nuestro hotel <strong>{{ $hotel->getName($client->hotel_id) }}</strong>.</p>
+                  <div class="row">
+                    <div class="col-md-12" style="text-align: center">
+                        <img src="https://res.cloudinary.com/dklua9mor/image/upload/v1544639796/hsa.jpg" alt="Hoteles San Agustín" width="174" height="150">
+                    </div>
+                  </div>
+                  <div><p>Estimado Sr./Sra. <strong>{{ $client->nombre_cliente.' '.$client->apellido_cliente }}</strong>, usted se hospeda hospedó en nuestro hotel <strong>{{ $hotel->getName($client->hotel_id) }}</strong>.</p>
                   <p>Nos gustaría nos ayudara a mejorar dejándonos su opinión acerca de nuestros servicios</p>
                   <br>
                   <br>
@@ -18,7 +23,7 @@
                     <input type="hidden" id="cliente" name="cliente" value="{{$client->id}}">
                     <input type="hidden" id="hotel" name="hotel" value="{{$client->hotel_id}}">
                     <div class="row">
-                      <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                         <label for="">Atención del Personal</label>
                       </div>
                     </div>
@@ -26,23 +31,29 @@
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
                         <input type="radio" value="1" name="personal" id="personal">Muy malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="2" name="personal" id="personal">Malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="3" name="personal" id="personal">Regular
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="4" name="personal" id="personal">Bueno
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input checked type="radio" value="5" name="personal" id="personal">Muy bueno
+                         <span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
+                  <br><br>
                     <div class="row">
-                      <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                         <label for="">Instalaciones y Servicios</label>
                       </div>
                     </div>
@@ -50,23 +61,29 @@
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
                         <input type="radio" value="1" name="instalaciones" id="instalaciones">Muy malo
+                        <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="2" name="instalaciones" id="instalaciones">Malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="3" name="instalaciones" id="instalaciones">Regular
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="4" name="instalaciones" id="instalaciones">Bueno
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input checked type="radio" value="5" name="instalaciones" id="instalaciones">Muy bueno
+                         <span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
+                  <br><br>
                   <div class="row">
-                    <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                       <label for="">Limpieza</label>
                     </div>
                   </div>
@@ -74,23 +91,29 @@
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
                         <input type="radio" value="1" name="limpieza" id="limpieza">Muy malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="2" name="limpieza" id="limpieza">Malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="3" name="limpieza" id="limpieza">Regular
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="4" name="limpieza" id="limpieza">Bueno
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input checked type="radio" value="5" name="limpieza" id="limpieza">Muy bueno
+                         <span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
+                  <br><br>
                   <div class="row">
-                    <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                       <label for="">Confort</label>
                     </div>
                   </div>
@@ -98,23 +121,29 @@
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
                         <input type="radio" value="1" name="confort" id="confort">Muy malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="2" name="confort" id="confort">Malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="3" name="confort" id="confort">Regular
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="4" name="confort" id="confort">Bueno
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input checked type="radio" value="5" name="confort" id="confort">Muy bueno
+                         <span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
+                  <br><br>
                   <div class="row">
-                    <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                       <label for="">Ubicación</label>
                     </div>
                   </div>
@@ -122,23 +151,29 @@
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
                         <input type="radio" value="1" name="ubicacion" id="ubicacion">Muy malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="2" name="ubicacion" id="ubicacion">Malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="3" name="ubicacion" id="ubicacion">Regular
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="4" name="ubicacion" id="ubicacion">Bueno
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input checked type="radio" value="5" name="ubicacion" id="ubicacion">Muy bueno
+                         <span class="checkmark"></span>
                       </label>
                     </div>
                   </div>
+                  <br><br>
                   <div class="row">
-                    <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                       <label for="">Relación Calidad-Precio</label>
                     </div>
                   </div>
@@ -146,24 +181,29 @@
                     <div class="form-group col-md-12">
                       <label class="radio-inline">
                         <input type="radio" value="1" name="relacion" id="relacion">Muy malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="2" name="relacion" id="relacion">Malo
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="3" name="relacion" id="relacion">Regular
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input type="radio" value="4" name="relacion" id="relacion">Bueno
+                         <span class="checkmark"></span>
                       </label>
                       <label class="radio-inline">
                         <input checked type="radio" value="5" name="relacion" id="relacion">Muy bueno
+                         <span class="checkmark"></span>
                       </label>
                     </div>
-                  </div>
-
+                 </div>
+                  <br><br>
                   <div class="row">
-                    <div class="form-group col-md-12">
+                      <div class="form-group col-md-12" style="text-align: center">
                       <label for="comment">Déjenos un comentario :</label>
                       <textarea class="form-control" rows="5" name="comentario" id="comentario"></textarea>
                     </div>
@@ -171,7 +211,7 @@
 
                 <div class="row">
                   <div class="form-group col-md-6 col-md-offset-5">
-                      <button id="enviar" type="button" class="btn btn-default">Enviar Encuesta</button>
+                      <button id="enviar" type="button" class="btn btn-primary">Enviar Encuesta</button>
                     </div>
                 </div>
 

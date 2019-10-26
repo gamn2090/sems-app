@@ -66,7 +66,7 @@ class ClientController extends Controller
                       ->select(DB::raw('client_id, sum(puntaje) as puntaje'))
                       ->where('hotel_id', '=', Auth::user()->hotel_id)
                       ->groupBy('client_id')
-                      ->get();
+                      ->paginate();
 
         $comment = new Comment();
         $client = new Client();

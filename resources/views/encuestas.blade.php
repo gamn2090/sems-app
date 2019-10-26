@@ -65,17 +65,11 @@
                     </tr>
                     @endforeach
                 </tbody>
-                </table>
-                <div id="dialog" class="detalles" style="display: none; ">
-                  <ul>
-                    <li id="detalles1"></li>
-                    <li id="detalles2"></li>
-                    <li id="detalles3"></li>
-                    <li id="detalles4"></li>
-                    <li id="detalles5"></li>
-                    <li id="detalles6"></li>
-                  </ul>
+                </table>  
+                <div id="products-links-table">
+                    {{$encuestas->links()}}
                 </div>
+              
                 @else
                 <h3 style="text-align: center;">no hay puntajes disponibles</h3>
                 @endif
@@ -98,6 +92,7 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+@include('partials.modaltest')
 <!-- ./wrapper -->
 @endsection
 
@@ -126,11 +121,8 @@ function searchPoints(id){
               $('#detalles3').text('Limpieza: '+data[2].puntaje);
               $('#detalles4').text('Confort: '+data[3].puntaje);
               $('#detalles5').text('Ubicacion: '+data[4].puntaje);
-              $('#detalles6').text('Relación Calidad-Precio: '+data[5].puntaje );
-              $("#dialog").dialog({
-                title: "Puntajes por servicios",
-              });
-
+              $('#detalles6').text('Relación Calidad-Precio: '+data[5].puntaje );              
+              $('#detalles').modal('show');
           });
     }
 </script>
