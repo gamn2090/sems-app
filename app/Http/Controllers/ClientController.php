@@ -62,30 +62,26 @@ class ClientController extends Controller
      */
     public function Encuestas()
     {
-			 $encuestas = DB::table('points')
-                      ->select(DB::raw('client_id, sum(puntaje) as puntaje'))
-                      ->where('hotel_id', '=', Auth::user()->hotel_id)
-                      ->groupBy('client_id')
-                      ->paginate();
+		$encuestas = Client::select('id')->where('recibido_encuesta','1')->orderBy('updated_at')->paginate(10);
 
         $comment = new Comment();
         $client = new Client();
         $encuestas_enviadas = 0;
-				$encuestas_enviadas = Client::where('enviado_mail','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
-				$encuestas_recibidas = 0;
-				$encuestas_recibidas = Client::where('recibido_encuesta','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
-				$enviado_trip = 0;
-				$enviado_trip = Client::where('enviado_trip','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
-				$comentarios=0;
-				$comentarios = Comment::where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$encuestas_enviadas = Client::where('enviado_mail','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$encuestas_recibidas = 0;
+		$encuestas_recibidas = Client::where('recibido_encuesta','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$enviado_trip = 0;
+		$enviado_trip = Client::where('enviado_trip','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$comentarios=0;
+		$comentarios = Comment::where('hotel_id','=', Auth::user()->hotel_id)->count();
 
-				$Notification = 0;
-				$comments_cont = 0;
-				$puntuacion_cont = 0;
+		$Notification = 0;
+		$comments_cont = 0;
+		$puntuacion_cont = 0;
 
-				$Notification = Notification::where('status','=', 1)->count();
-    		$comments_cont = Notification::where('type','=','Comentario')->count();
-    		$puntuacion_cont = Notification::where('type','=','Puntuación')->count();
+		$Notification = Notification::where('status','=', 1)->count();
+		$comments_cont = Notification::where('type','=','Comentario')->count();
+		$puntuacion_cont = Notification::where('type','=','Puntuación')->count();
 
         return view('encuestas', compact('encuestas','comment','client','encuestas_enviadas','encuestas_recibidas','enviado_trip','comentarios','Notification','comments_cont','puntuacion_cont'));
 	  }
@@ -102,20 +98,20 @@ class ClientController extends Controller
         $comment = new Comment();
         $client = new Client();
         $encuestas_enviadas = 0;
-				$encuestas_enviadas = Client::where('enviado_mail','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
-				$encuestas_recibidas = 0;
-				$encuestas_recibidas = Client::where('recibido_encuesta','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
-				$enviado_trip = 0;
-				$enviado_trip = Client::where('enviado_trip','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
-				$comentarios=0;
-				$comentarios = Comment::where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$encuestas_enviadas = Client::where('enviado_mail','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$encuestas_recibidas = 0;
+		$encuestas_recibidas = Client::where('recibido_encuesta','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$enviado_trip = 0;
+		$enviado_trip = Client::where('enviado_trip','=', '1')->where('hotel_id','=', Auth::user()->hotel_id)->count();
+		$comentarios=0;
+		$comentarios = Comment::where('hotel_id','=', Auth::user()->hotel_id)->count();
 
-				$Notification = 0;
-				$Notification = Notification::where('status','=', 1)->count();
-				$comments_cont = 0;
-    		$comments_cont = Notification::where('type','=','Comentario')->count();
-    		$puntuacion_cont = 0;
-    		$puntuacion_cont = Notification::where('type','=','Puntuación')->count();
+		$Notification = 0;
+		$Notification = Notification::where('status','=', 1)->count();
+		$comments_cont = 0;
+		$comments_cont = Notification::where('type','=','Comentario')->count();
+		$puntuacion_cont = 0;
+		$puntuacion_cont = Notification::where('type','=','Puntuación')->count();
 
         return view('sentsurveys', compact('encuestas','comment','client','encuestas_enviadas','encuestas_recibidas','enviado_trip','comentarios','Notification','comments_cont','puntuacion_cont'));
 	  }

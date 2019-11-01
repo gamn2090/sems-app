@@ -55,19 +55,19 @@
                   </thead>
                   <tbody>
                     @foreach($encuestas as $encuesta)
-                    <tr id="{{ $encuesta->client_id }}" onclick="searchPoints({{$encuesta->client_id}})" style="cursor: pointer" >
-                      <td  style="width: 30%;">{{ $client->getName($encuesta->client_id) }}</td>
+                    <tr id="{{ $encuesta->id }}" onclick="searchPoints({{$encuesta->id}})" style="cursor: pointer" >
+                      <td  style="width: 30%;">{{ $client->getName($encuesta->id) }}</td>
                       <td style="width: 10%;" >
-                        {{ round(($encuesta->puntaje/6),2) }}
+                        {{ $client->getPoints($encuesta->id) }}
                       </td>
-                      <td style="width: 10%;">{{ $client->getReservation($encuesta->client_id) }}</td>
-                      <td style="width: 50%;">{{ $comment->getComment($encuesta->client_id) }}</td>
+                      <td style="width: 10%;">{{ $client->getReservation($encuesta->id) }}</td>
+                      <td style="width: 50%;">{{ $comment->getComment($encuesta->id) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 </table>  
-                <div id="products-links-table">
-                    {{$encuestas->links()}}
+                <div>
+                    {{$encuestas->links("pagination::bootstrap-4")}}
                 </div>
               
                 @else

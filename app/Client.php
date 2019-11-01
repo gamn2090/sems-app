@@ -42,6 +42,12 @@ class Client extends Model
         $answer = Client::find($id);
         return $answer->mail_cliente;
     }
+    public function getPoints($id)
+    {        
+        $answer = Point::where('client_id',$id)->sum('puntaje');
+        $puntaje = round(($answer/6),2);
+        return $puntaje;
+    }
     public function getCin($id)
     {
         $answer = Client::find($id);
