@@ -52,9 +52,17 @@
 
   @yield('css')
 
+  <script>
+      window.onload = function () { document.getElementById("preloader").style.display = "none";}
+  </script>
 </head>
 
+    <div id="preloader" style=" background: #fff url({{ asset('img/preloader.svg') }}) no-repeat center center;"></div><!-- to show a gif until page loads -->
+
         @yield('content')
+          <div class="loading" style="display: none; z-index:1100">
+            <img class="loading-gif" src="{{asset('img/loading.gif')}}" alt="" >
+          </div>
 
         <!-- Required JavaScript Libraries -->
          <!-- jQuery -->
