@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('home')}}" class="brand-link">
-      <img src="{{ asset('img/hsa-small.png') }}" alt="Hoteles San Agustin" class="brand-image"
+      <img src="" alt="Hoteles San Agustin" class="brand-image" alt="image"
            style="opacity: .8">
       <span class="brand-text font-weight-light">{{Auth::user()->name}}</span>
     </a>

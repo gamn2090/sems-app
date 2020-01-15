@@ -47,7 +47,6 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
     </div>
-    <p class="botto-text"> Hoteles San Agustín SemsApp</p>
 </div></div></div>
 
 
